@@ -1,0 +1,41 @@
+<!ENTITY % plistObject "(array | data | date | dict | real | integer | string | true | false | theme )" >
+<!ELEMENT plist %plistObject;>
+<!ATTLIST plist version CDATA "1.0" >
+
+<!-- Collections -->
+<!ELEMENT array (%plistObject;)*>
+<!ELEMENT dict (key, %plistObject;)*>
+<!ELEMENT key (#PCDATA)>
+
+<!-- Primitive types -->
+<!ELEMENT string (#PCDATA)>
+<!ELEMENT data (#PCDATA)> <!-- Contents interpreted as Base-64 encoded -->
+<!ELEMENT date (#PCDATA)> <!-- Contents should conform to ISO 8601 (e.g., YYYY-MM-DDTHH:MM:SSZ) -->
+
+<!-- Numerical primitives -->
+<!ELEMENT true EMPTY>  <!-- Boolean constant true -->
+<!ELEMENT false EMPTY> <!-- Boolean constant false -->
+<!ELEMENT real (#PCDATA)> <!-- Floating point number -->
+<!ELEMENT integer (#PCDATA)> <!-- Base-10 integer -->
+
+<!-- Theme Management -->
+<!ELEMENT themes (theme+)> <!-- Allows multiple themes -->
+<!ELEMENT theme (name, description?, colors, fonts, styles?)>
+<!ELEMENT name (#PCDATA)>  <!-- Theme name -->
+<!ELEMENT description (#PCDATA)>  <!-- Optional theme description -->
+
+<!-- Colors -->
+<!ELEMENT colors (primary, secondary, accent?, background, text, opacity?)>
+<!ELEMENT primary (#PCDATA)> 
+<!ELEMENT secondary (#PCDATA)>
+<!ELEMENT accent (#PCDATA)>  <!-- Optional accent color -->
+<!ELEMENT background (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT opacity (#PCDATA)> <!-- Value between 0.0 and 1.0 -->
+
+<!-- Fonts -->
+<!ELEMENT fonts (font+)>
+<!ELEMENT font (#PCDATA)>
+<!ATTLIST font 
+    name CDATA #REQUIRED
+    size CDATA #IMPLIED> <!-- Ensure size is a number -->
