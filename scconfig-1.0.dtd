@@ -1,0 +1,46 @@
+<!ENTITY % scconfigObject "(metadata | title | theme | sync | encryption | autosave | revisions | documentSettings )">
+
+<!ELEMENT scconfig %scconfigObject;>
+<!ATTLIST scconfig version CDATA "1.0">
+
+<!-- Metadata -->
+<!ELEMENT metadata (created, modified, author)>
+<!ELEMENT created (#PCDATA)>                        <!-- ISO 8601 Timestamp -->
+<!ELEMENT modified (#PCDATA)>                       <!-- ISO 8601 Timestamp -->
+<!ELEMENT author (#PCDATA)>                         <!-- Name or Identifier -->
+
+<!-- Title and Theme -->
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT theme (#PCDATA)>                          <!-- "Light" or "Dark" -->
+
+<!-- Sync Configuration -->
+<!ELEMENT sync (enabled, provider, frequency, syncOnSave, periodicSync, cloudSync, localBackup)>
+<!ELEMENT enabled (#PCDATA)>                        <!-- "true" or "false" -->
+<!ELEMENT provider (#PCDATA)>                       <!-- e.g., "iCloud", "GoogleDrive", "Dropbox" -->
+<!ELEMENT frequency (#PCDATA)>                      <!-- Sync interval in minutes -->
+<!ELEMENT syncOnSave (#PCDATA)>                     <!-- "true" or "false" -->
+<!ELEMENT periodicSync (#PCDATA)>                   <!-- "true" or "false" -->
+<!ELEMENT cloudSync (#PCDATA)>                      <!-- "true" or "false" -->
+<!ELEMENT localBackup (#PCDATA)>                    <!-- "true" or "false" -->
+
+<!-- Encryption Configuration -->
+<!ELEMENT encryption (enabled, algorithm, key, keyLength)>
+<!ELEMENT enabled (#PCDATA)>                        <!-- "true" or "false" -->
+<!ELEMENT algorithm (#PCDATA)>                      <!-- e.g., "AES-256", "RSA" -->
+<!ELEMENT key (#PCDATA)>                            <!-- Base64 or Hex encoded encryption key -->
+<!ELEMENT keyLength (#PCDATA)>                      <!-- e.g., "256", "4096" -->
+
+<!-- Autosave & Revisions -->
+<!ELEMENT autosave (#PCDATA)>                       <!-- Interval in minutes -->
+<!ELEMENT revisions (#PCDATA)>                      <!-- Number of stored revisions -->
+
+<!-- Document Settings -->
+<!ELEMENT documentSettings (canvasSize, pageOrientation, background, dpi, margins, lineSpacing)>
+<!ELEMENT canvasSize (#PCDATA)>                     <!-- "A4", "Letter", "Custom:1920x1080" -->
+<!ELEMENT pageOrientation (#PCDATA)>                <!-- "Portrait" or "Landscape" -->
+<!ELEMENT background (#PCDATA)>                     <!-- "Grid", "Lined", "Blank", "CustomColor:#FFFFFF" -->
+<!ELEMENT dpi (#PCDATA)>                            <!-- Dots per inch (e.g., 300, 72) -->
+<!ELEMENT margins (#PCDATA)>                        <!-- e.g., "10,10,10,10" (top, right, bottom, left in px) -->
+<!ELEMENT lineSpacing (#PCDATA)>                    <!-- e.g., "1.5", "2.0" -->
+<!ELEMENT colorSpace (#PCDATA)>                     <!-- "RGB", "P3", "CMYK", "Grayscale" -->
+<!ELEMENT bitDepth (#PCDATA)>                       <!-- "8", "16", "32" (bit depth for images/drawings) -->
